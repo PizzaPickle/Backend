@@ -23,14 +23,13 @@ public class RequestLetter extends BaseTimeEntity {
     @JoinColumn(name = "consulting_history_id")
     private ConsultingHistory consultingHistory;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "consulting_reject_info_id", nullable = true)
-    private ConsultingRejectInfo consultingRejectInfo;
-
     private int customerId;
     private int customerAge;
-    private String customerGender;
     private String customerJob;
+
+
+    @Enumerated(EnumType.STRING)
+    private GenderType customerGender;
 
     private String request;
     @Enumerated(EnumType.STRING)
@@ -47,6 +46,7 @@ public class RequestLetter extends BaseTimeEntity {
 
     private long availableInvestAmount;
     private long desiredInvestAmount;
+    private long monthlyIncome;
 
     private String referenceFileUrl;
 }

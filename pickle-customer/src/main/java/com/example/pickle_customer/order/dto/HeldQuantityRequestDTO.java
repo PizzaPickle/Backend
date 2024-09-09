@@ -1,9 +1,6 @@
 package com.example.pickle_customer.order.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @AllArgsConstructor
@@ -11,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class HeldQuantityRequestDTO {
     private String productCode;
-    private Integer heldQuantity;
+    private double heldQuantity;
 
 
 }

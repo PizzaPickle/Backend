@@ -16,9 +16,17 @@ public enum ErrorCode {
     UN_AUTHORIZED_EXCEPTION(HttpStatus.UNAUTHORIZED, "ACCOUNT_002", "사용자의 권한이 아님"),
     NOT_FOUND_STRATEGY_EXCEPTION(HttpStatus.NOT_FOUND, "STRATEGY_001", "전략을 찾을 수 없음"),
     NOT_FOUND_MY_STRATEGY_EXCEPTION(HttpStatus.NOT_FOUND, "STRATEGY_001", "나의 전략을 찾을 수 없음"),
-
-    CONFLICT_MY_STRATEGY_EXCEPTION(HttpStatus.CONFLICT, "MY_STRATEGY_002", "이미 나의 전략이 존재함");
-
+    CONFLICT_MY_STRATEGY_EXCEPTION(HttpStatus.CONFLICT, "MY_STRATEGY_002", "이미 나의 전략이 존재함"),
+    NOT_FOUND_IMAGE_EXCEPTION(HttpStatus.NOT_FOUND, "IMAGE_001", "사진이 없습니다."),
+    UNABLE_TO_CREATE_REQUEST_LETTER_EXCEPTION(HttpStatus.BAD_REQUEST, "CONSULTING_002", "요청서를 생성할 수 없음"),
+    NOT_FOUND_REQUEST_LETTER_EXCEPTION(HttpStatus.NOT_FOUND, "CONSULTING_003", "요청서를 찾을 수 없음"),
+    UNABLE_TO_CREATE_REQUEST_LETTER_DUE_TO_MQ_FAILURE(HttpStatus.INTERNAL_SERVER_ERROR, "CONSULTING_004", "내부 통신 에러로 인해, "),
+    UNEXPECTED_SERVICE_EXCEPTION(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON_001", "예기치 않은 예외"),
+    NOT_FOUND_PRESET_EXCEPTION(HttpStatus.NOT_FOUND, "PRESET_001", "프리셋을 찾을 수 없습니다."),
+    UNAUTHORIZED_STRATEGY_EXCEPTION(HttpStatus.UNAUTHORIZED, "STRATEGY_002", "접근할 권한이 없는 전략임"),
+    ILLEGAL_ARGUMENT_AMOUNT_EXCEPTION(HttpStatus.BAD_REQUEST, "AMOUNT_001", "잔액 이상의 값을 매매할 수 없음"),
+    UNABLE_TO_CREATE_REJECTED_INFO_EXCEPTION(HttpStatus.BAD_REQUEST, "CONSULTING_005", "거절 내역을 저장할 수 없어, 거절을 할 수 없음"),
+    UNABLE_TO_SEND_ROOM_INFO_TO_MQ_EXCEPTION(HttpStatus.INTERNAL_SERVER_ERROR, "CONSULTING_006", "상담방을 생성할 수 없음" );
     private final String code;
     private final String message;
     private final HttpStatus status;

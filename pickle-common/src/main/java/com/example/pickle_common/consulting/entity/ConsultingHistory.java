@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -18,32 +19,42 @@ import java.util.Date;
 public class ConsultingHistory extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "conulting_history_id")
+    @Column(name = "consulting_history_id")
     private int id;
 
     private int pbId;
     private String pbName;
     private String pbBranchOffice;
+    // TODO: 추가에 따른 로직 추가
+    private String pbImage;
 
     private int customerId;
     private String customerName;
 
 
     private String roomId;
-    private String pbImage;
+    private LocalDateTime date;
 
     @Enumerated(EnumType.STRING)
-    private String consultingStatusName;
+    private ConsultingStatusEnum consultingStatusName;
 
     // 양방향이 꼭 필요한지 확인을 해봐야한다.
     // OneToOne 양방향 매핑에서는 fetch LAZY 적용이 안되는 상황이 많다.
     @OneToOne(mappedBy = "consultingHistory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private RequestLetter requestLetter;
 
-    @OneToOne(mappedBy = "consultingHistory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private ConsultingConfirmDate consultingConfirmDate;
+    public void changeStatus(ConsultingStatusEnum consultingStatusEnum) {
+        consultingStatusName = consultingStatusEnum;
+    }
+
+    public void setRoomId(String roomId){
+        this.roomId = roomId;
+    }
+//
+//    @OneToOne(mappedBy = "consultingHistory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private ConsultingConfirmDate consultingConfirmDate;
 
     // 전략과 양방향 매핑
-    @OneToOne(mappedBy = "consultingHistory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Strategy strategy;
+//    @OneToOne(mappedBy = "consultingHistory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private Strategy strategy;
 }
