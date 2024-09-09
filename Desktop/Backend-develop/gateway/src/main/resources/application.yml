@@ -1,0 +1,29 @@
+server:
+  port: 8080  # Gateway ??
+
+spring:
+  application:
+    name: gateway  # Gateway ??? ??
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        - id: pickle-pb  # pickle-pb ???? ???
+          uri: ${GATEWAY_URI_PB}
+          predicates:
+            - Path=/api/pickle-pb/**
+          filters:
+            - AuthenticationFilter
+
+        - id: pickle-customer  # pickle-customer ???? ???
+          uri: ${GATEWAY_URI_CUSTOMER}
+          predicates:
+            - Path=/api/pickle-customer/**
+          filters:
+            - AuthenticationFilter
+
+        - id: pickle-common  # pickle-common ???? ???
+          uri: ${GATEWAY_URI_COMMON}
+          predicates:
+            - Path=/api/pickle-common/**

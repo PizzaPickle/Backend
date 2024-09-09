@@ -1,0 +1,30 @@
+server:
+  port: 8003  # 임의의 가용 포트를 사용 (특정 포트를 원하면 숫자를 설정)
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${CUSTOMER_DATASOURCE_URL}
+    username: ${CUSTOMER_DATASOURCE_USERNAME}
+    password: ${CUSTOMER_DATASOURCE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  application:
+    name: pickle-customer  # 서비스 이름
+  rabbitmq:
+    host: ${MQ_HOST}
+    port: ${MQ_PORT}
+    username: ${MQ_USERNAME}
+    password: ${MQ_PASSWORD}
+    listener:
+      simple:
+        auto-startup: true
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG  # Spring Security의 로그 레벨을 DEBUG로 설정
+
+
