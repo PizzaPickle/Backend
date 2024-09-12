@@ -110,9 +110,9 @@ public class CustomerController {
 
     // 토큰 검증
     @GetMapping("/api/pickle-customer/validate")
-    public String validateToken(@RequestParam("token") String token) {
+    public String validateToken(@RequestParam("token") String accessToken) {
         try {
-            joinService.validateToken(token);
+            joinService.validateToken(accessToken);
             return "Token is valid";
         } catch (Exception e) {
             return "Invalid Token";
